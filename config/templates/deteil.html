@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Gul turi: {{ tur.name }}</h2>
+
+    <div class="card shadow-sm border-light">
+        <div class="card-body">
+            <br>
+            <p class="card-text"><strong>Nomi:</strong> {{ gul.name }}</p>
+        </div>
+    </div>
+
+    <a href="{% url 'home' %}" class="btn btn-secondary mt-4">Orqaga qaytish</a>
+</div>
+
+{% endblock main %}
