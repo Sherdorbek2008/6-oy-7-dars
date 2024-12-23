@@ -1,10 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from . import views
+from .views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('gullar/', views.barcha_gullar, name='barcha_gullar'),
-    path('turlar/<int:tur_id>/', views.gullar_turlar_boyicha, name='gullar_turlar_boyicha'),
-    path('gul/<int:gul_id>/', views.bitta_gul, name='bitta_gul'),
+    path('', index, name='home'),
+    path('type/<int:type_id>/', types, name='type_detail'),
+    path('flower/<int:flower_id>/', flower, name='flower_detail')
 ]

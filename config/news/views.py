@@ -1,15 +1,37 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Tur, Gul
+from django.shortcuts import render, get_object_or_404, get_list_or_404
+from datetime import datetime
+from .models import *
 
-def barcha_gullar(request):
-    gullar = Gul.objects.all()
-    return render(request, 'index.html', {'gullar': gullar})
 
-def gullar_turlar_boyicha(request, tur_id):
-    turlar = get_object_or_404(Tur, id=tur_id)
-    gullar = turlar.gullar.all()
-    return render(request, 'index.html', {'turlar': turlar, 'gullar': gullar})
+def index(request):
+    flowers = Types.objects.all()
 
-def bitta_gul(request, gul_id):
-    gul = get_object_or_404(Gul, id=gul_id)
-    return render(request, 'index.html', {'gul': gul})
+    context = {
+        'flowers': flowers,
+        'current_year': datetime.now().year
+    }
+
+    return render(request, 'index.html', context)
+
+
+def types(request, type_id):
+    types = get_object_or_404(Types, id=type_id)
+    flowers = Flowers.objects.filter(type_id=type_id, published=True)
+
+    context = {
+        'types': [types],
+        'flowers': flowers,
+        'current_year': datetime.now().year
+    }
+
+    return render(request, 'index.html', context)
+
+
+def flower(request, flower_id):
+    flower = get_object_or_404(Flowers, id=flower_id, published=True)
+
+    context = {
+        'flower': flower
+    }
+
+    return render(request, 'deteil.html', context)

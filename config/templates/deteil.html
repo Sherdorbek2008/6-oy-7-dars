@@ -3,12 +3,16 @@
 {% block main %}
 
 <div class="container my-5">
-    <h2 class="text-center mb-4">Gul turi: {{ tur.name }}</h2>
+    <h2 class="text-center mb-4">Gul turi: {{ flower.type.name }}</h2>
 
     <div class="card shadow-sm border-light">
         <div class="card-body">
+            <h5 class="card-title">Gul haqida batafsil ma'lumot!</h5>
             <br>
-            <p class="card-text"><strong>Nomi:</strong> {{ gul.name }}</p>
+            <p class="card-text"><strong>Nomi:</strong> {{ flower.name }}</p>
+            <p class="card-text"><strong>Narxi:</strong> {{ flower.price }} UZS</p>
+            <p class="card-text"><strong>Soni:</strong> {{ flower.count }} ta</p>
+            <p class="card-text"><strong>Tavsifi:</strong> {{ flower.description }}</p>
         </div>
     </div>
 
